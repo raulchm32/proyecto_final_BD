@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de Ordenes</h1>
+  <div class="container">
+  <p>Aqui estan los elementos del inventario:</p>                                          
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Subtotal</th>
+        <th>Total</th>
+        <th>Shipping</th>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+          <td><%= order.id %></td>
+          <td><%= order.subtotal %></td>
+          <td><%= order.total %></td>
+          <td><%= order.shipping %></td>
+    </tbody>
+  </table>
+
+</body>
+</div>
+<%= link_to 'Nuevo Elemento', new_order_path, class: "btn btn-danger" %>
+<%= link_to 'Download Report', inventarios_path(format: 'pdf') %>

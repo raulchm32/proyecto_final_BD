@@ -1,0 +1,28 @@
+<%= form_for(@buyer) do |f| %>
+  <% if @buyer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buyer.errors.count, "error") %> prohibited this buyer from being saved:</h2>
+
+      <ul>
+      <% @buyer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :Nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :Direccion %><br>
+    <%= f.text_field :Direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :Telefono %><br>
+    <%= f.text_field :Telefono %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Crear", class: "btn btn-danger" %>
+  </div>
+<% end %>

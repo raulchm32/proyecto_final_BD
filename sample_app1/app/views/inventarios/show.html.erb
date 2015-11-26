@@ -1,0 +1,35 @@
+<% provide(:title, @inventario.Nombre) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        Elemento <%= @inventario.id %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <p>
+      <strong>Nombre:</strong>
+      <%= @inventario.Nombre %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <p>
+      <strong>Cantidad:</strong>
+      <%= @inventario.Cantidad %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <p>
+      <strong>Descripcion:</strong>
+      <%= @inventario.Descripcion %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <p>
+      <strong>Precio_Unitario:</strong>
+      <%= number_to_currency(@inventario.Preciounit) %>
+    </p>
+  </div>
+<%= link_to 'Edit', edit_inventario_path(@inventario) %> |
+<%= link_to 'Back', inventarios_path %>

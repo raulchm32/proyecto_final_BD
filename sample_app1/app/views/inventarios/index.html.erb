@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 text-right">
+      <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+    </div>
+  </div>
+</div>
+<h1>Lista de Inventario</h1>
+  <div class="container">
+  <p>Aqui estan los elementos del inventario:</p>                                          
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inventarios.each do |inventario| %>
+        <tr>
+          <td><%= inventario.id %></td>
+          <td><%= inventario.Nombre %></td>
+          <% if inventario.order_items.any? %> 
+          <td><%= inventario.Cantidad-inventario.order_items.first.quantity %></td>
+          <% else %>
+          <td><%= inventario.Cantidad %></td>
+          <% end %>
+          <td><%= number_to_currency(inventario.Preciounit) %></td>
+          <td><%= inventario.Descripcion %></td>
+          <td><%= link_to 'Show', inventario %></td>
+          <td><%= link_to 'Edit', edit_inventario_path(inventario) %></td>
+          <td><%= link_to 'Destroy', inventario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</body>
+<h3 class="text-center">Products for Sale</h3>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <% @inventarios.each do |inventario| %>
+      <%= render "product_row", inventario: inventario, order_item: @order_item %>
+    <% end %>
+  </div>
+</div>
+<br>
+</div>
+
+
+<%= link_to 'Nuevo Elemento', new_inventario_path, class: "btn btn-danger" %>
+<%= link_to 'Download Report', inventarios_path(format: :pdf) %>
